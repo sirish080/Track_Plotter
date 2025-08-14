@@ -1,15 +1,31 @@
 {
   "services": {
-    "example-app": {
-      "name": "example-app",
+    "shutdown-app": {
+      "name": "shutdown-app",
       "type": "app",
-      "exec_cmd": "/mnt/managed_home/farm-ng-user-YOUR_USER_HERE/amiga-app-template/venv/bin/python3 /mnt/managed_home/farm-ng-user-YOUR_USER_HERE/amiga-app-template/main.py",
-      "args": [
-        "--config /mnt/managed_home/farm-ng-user-YOUR_USER_HERE/amiga-app-template/config.json", "--port 8042"
-      ],
+      "exec_cmd": "/mnt/managed_home/farm-ng-user-sirish08/Farm-ng-shutdown/venv/bin/python3 /mnt/managed_home/farm-ng-user-sirish08/Farm-ng-shutdown/main.py",
+      "args": [ "--port 8050" ],
+      "autostart": true,
+      "app_route": "8050",
+      "display_name": "Shutdown Brain"
+    },
+    "Platform-app": {
+      "name": "Platform-app",
+      "type": "app",
+      "exec_cmd": "/mnt/managed_home/farm-ng-user-sirish08/farm-ng-soybean/venv/bin/python3 /mnt/managed_home/farm-ng-user-sirish08/farm-ng-soybean/main.py",
+      "args": [ "--port 8042" ],
       "autostart": true,
       "app_route": "8042",
-      "display_name": "Monitor App"
+      "display_name": "Soybean Platform"
+    },
+    "Plotter-app": {
+      "name": "Plotter-app",
+      "type": "app",
+      "exec_cmd": "/mnt/managed_home/farm-ng-user-sirish08/farm-ng-soybean/venv/bin/python3 /mnt/managed_home/farm-ng-user-sirish08/farm-ng-soybean/main.py",
+      "args": [ "--port 8045" ],
+      "autostart": true,
+      "app_route": "8045",
+      "display_name": "Track Plotter"
     }
   }
 }
