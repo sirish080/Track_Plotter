@@ -81,7 +81,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--port", type=int, default=8050, help="port to run the server")
+    parser.add_argument("--port", type=int, default=8045, help="port to run the server")
     parser.add_argument("--debug", action="store_true", help="debug mode")
     args = parser.parse_args()
 
