@@ -58,7 +58,7 @@ async def websocket_endpoint(websocket: WebSocket):
     try:
         while True:
             try:
-                msg = await asyncio.wait_for(websocket.receive_json(), timeout=0.1)
+                msg = await asyncio.wait_for(websocket.receive_json(), timeout=0.5)
                 print(f"[WebSocket] Received: {msg}")
 
                 action = msg.get("action")
