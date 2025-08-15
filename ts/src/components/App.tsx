@@ -37,7 +37,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const host = window.location.hostname;
-    ws.current = new WebSocket(`ws://${host}:8050/ws`);
+    ws.current = new WebSocket(`ws://${host}:8045/ws`);
 
     ws.current.onopen = () => {
       console.log("WebSocket connection opened");
