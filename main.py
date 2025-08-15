@@ -18,28 +18,22 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-def shutdown_linux():
-    """Shuts down the Linux machine if the OS is Linux."""
+def run_plotter():
+    """Runs the start_services.sh script on Linux systems."""
     if platform.system() != "Linux":
-        raise EnvironmentError("This shutdown function is only intended for Linux systems.")
+        raise EnvironmentError("This function is only intended for Linux systems.")
     try:
-        #subprocess.run(["echo", "Shutdown command would be executed here."], check=True)  # For testing purpose
-        subprocess.run(["sudo", "shutdown", "-h", "now"], check=True)
+        # Make sure the script is executable (only once needed, can be removed later)
+        subprocess.run(["chmod", "+x", "start_services.sh"], check=True)
+
+        # Run the script
+        subprocess.run(["./start_services.sh"], check=True)
     except subprocess.CalledProcessError as e:
-        print(f"[Shutdown] Command failed: {e}")
+        print(f"[Plotter] Command failed: {e}")
     except Exception as e:
-        print(f"[Shutdown] Unexpected error: {e}")
+        print(f"[Plotter] Unexpected error: {e}")
         
-def reboot_linux():
-    """Reboots the Linux machine."""
-    if platform.system() != "Linux":
-        raise EnvironmentError("This reboot function is only for Linux systems.")
-    try:
-        subprocess.run(["sudo", "reboot"], check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"[Reboot] Command failed: {e}")
-    except Exception as e:
-        print(f"[Reboot] Unexpected error: {e}")
+
         
 
 @app.on_event("startup")
@@ -69,12 +63,8 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 action = msg.get("action")
 
-                if action == "shutdown":
-                    await websocket.send_json({"status": "shutting_down"})
-                    shutdown_linux()
-                elif action == "reboot":
-                    await websocket.send_json({"status": "rebooting"})
-                    reboot_linux()
+                if action == "Track_plotter":
+                    run_plotter()
                 else:
                     await websocket.send_json({"error": f"unknown action '{action}'"})
 
