@@ -12,6 +12,7 @@ build/
 develop-eggs/
 dist/
 downloads/
+track-plotter/
 eggs/
 .eggs/
 lib/
