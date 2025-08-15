@@ -22,9 +22,9 @@
       "name": "Plotter-app",
       "type": "app",
       "exec_cmd": "/mnt/managed_home/farm-ng-user-sirish08/Track-plotter/venv/bin/python3 /mnt/managed_home/farm-ng-user-sirish08/Track-plotter/main.py",
-      "args": [ "--port 8080" ],
+      "args": [ "--port 8045" ],
       "autostart": true,
-      "app_route": "8080",
+      "app_route": "8045",
       "display_name": "Track Plotter"
     }
   }
